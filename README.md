@@ -3,6 +3,8 @@ Compile and try :)
 This is probably useless but hey it works.
 
 ``gcc "valgrind runner.c" -o valgrind``
+
 ``./valgrind a.out [arg arg]``
 
-Pls don't do ./valgrind valgrind valgrind valgrind KEKW
+Pls don't do ./valgrind valgrind valgrind valgrind
+KEKW
