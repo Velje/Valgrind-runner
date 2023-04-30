@@ -4,9 +4,11 @@ Compile and try :)
 
 This is probably useless but hey it works.
 
+USAGE:
+
 ``gcc "valgrind runner.c" -o valgrind``
 
 ``./valgrind a.out [arg arg]``
 
-Pls don't do ./valgrind valgrind valgrind valgrind
+Pls don't do ./valgrind valgrind valgrind valgrind and don't use more than MAX_CHARACTERS variable for arguements.
 KEKW
