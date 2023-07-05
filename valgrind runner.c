@@ -22,7 +22,7 @@ void free_memory(char** pointer, const unsigned end) {
     free(pointer);
 }
 
-int main(int argc, char** argv) {
+int main(unsigned argc, char** argv) {
 
     check_error(argc < 2, "./valgrind a.out [arg arg]");
     char** args = malloc(sizeof(char*) * MAX_ARGUEMENTS);
@@ -45,8 +45,8 @@ int main(int argc, char** argv) {
             check_error(true, "Allocation failed! (*args)");
         }
     }
-    for (int i = 0; i < argc; i++) {
-        if (i + 1 == 1) {
+    for (unsigned i = 0; i < argc; i++) {
+        if (i == 0) {
             args[argc2][0] = '.'; args[argc2][1] = '/'; args[argc2][2] = '\0';
         }
         else {
