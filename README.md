@@ -1,4 +1,5 @@
 If you need more arguements from the terminal increase the MAX_ARGUEMENTS variable.
+Now that I think about it again static allocation was better to use here.
 
 Compile and try :)
 
