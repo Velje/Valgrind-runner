@@ -6,6 +6,7 @@
 
 const unsigned MAX_CHARACTERS = 30;
 const unsigned MAX_ARGUEMENTS = 9;
+const unsigned STATIC_ARGUEMENTS = 5;
 
 #define check_error(cond,msg)\
     do {\
@@ -16,13 +17,13 @@ const unsigned MAX_ARGUEMENTS = 9;
     } while (0)
 
 void free_memory(char** pointer, const unsigned end) {
-    for (unsigned i = 5; i < end; i++) {
+    for (unsigned i = STATIC_ARGUEMENTS; i < end; i++) {
         free(*(pointer + i));
     }
     free(pointer);
 }
 
-int main(unsigned argc, char** argv) {
+int main(int argc, char** argv) {
 
     check_error(argc < 2, "./valgrind a.out [arg arg]");
     char** args = malloc(sizeof(char*) * MAX_ARGUEMENTS);
@@ -34,18 +35,18 @@ int main(unsigned argc, char** argv) {
     args[argc2++] = "--show-leak-kinds=all";
     args[argc2++] = "--track-origins=yes";
     args[argc2++] = "--verbose";
-    argc -= 1;
-    if (argc + argc2 + 1 > MAX_ARGUEMENTS) {
+    if (argc + argc2 > MAX_ARGUEMENTS) {
         free(args);
         check_error(true, "Too many arguements! (./valgrind a.out [arg arg] (max 2 arg))");
     }
+    argc -= 1;
     for (unsigned i = argc2; i < argc2 + argc; i++) {
         if (!(*(args + i) = malloc(MAX_CHARACTERS))) {
             free_memory(args, i);
             check_error(true, "Allocation failed! (*args)");
         }
     }
-    for (unsigned i = 0; i < argc; i++) {
+    for (int i = 0; i < argc; i++) {
         if (i == 0) {
             args[argc2][0] = '.'; args[argc2][1] = '/'; args[argc2][2] = '\0';
         }
